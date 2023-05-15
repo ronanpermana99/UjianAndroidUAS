@@ -1,7 +1,7 @@
 # APLIKASI ANDROID
-###### Aplikasi android sederhana untuk menampilkan inputan data kedalam listview edit oleh Ronan Permana
+###### Aplikasi android sederhana yang berfungsi untuk menampilkan inputan data kedalam listview
 
 ### Dibuat Oleh :
 ##### Ronan Permana
 ### NIM
-##### G.231.20,0028
+##### G.231.20.0028
