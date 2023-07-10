@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText edNamaDepan = (EditText) findViewById(R.id.edNamaDepan);
         EditText edNamaBelakang = (EditText) findViewById(R.id.edNamaBelakang);
+        EditText edUmur = (EditText) findViewById(R.id.edUmur);
         Button btnSimpan = (Button) findViewById(R.id.btnSimpan);
 
         ArrayList<String> daftar_nama = new ArrayList<>();
@@ -31,15 +32,39 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String isian_nama_depan = edNamaDepan.getText().toString();
                 String isian_nama_belakang = edNamaBelakang.getText().toString();
+                String isian_umur = edUmur.getText().toString();
+                Integer doubleisian_nama_umur = Integer.valueOf(isian_umur);
 
                 if(isian_nama_depan.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
                 }else{
                     String nama_lengkap = isian_nama_depan.concat(" ").concat(isian_nama_belakang);
                     daftar_nama.clear();
-                    daftar_nama.add(nama_lengkap);
+
+                    for (int i = 0; i < doubleisian_nama_umur; i++) {
+                        String status;
+
+                        if (doubleisian_nama_umur >= 0 && doubleisian_nama_umur <= 10) {
+                            status = "anak";
+                        } else if (doubleisian_nama_umur >= 11 && doubleisian_nama_umur <= 20) {
+                            status = "remaja";
+                        } else if (doubleisian_nama_umur >= 21 && doubleisian_nama_umur <= 30) {
+                            status = "dewasa";
+                        } else {
+                            status = "tua";
+                        }
+
+                        if (i % 2 == 0) {
+
+                            String nama_dengan_status = i + " " + nama_lengkap + ". Status : " + status;
+                            daftar_nama.add(nama_dengan_status);
+                        }
+                    }
+
                     edNamaDepan.setText("");
                     edNamaBelakang.setText("");
+                    edUmur.setText("");
+
                     intent_list.putStringArrayListExtra("daftar_nama", daftar_nama);
                     startActivity(intent_list);
                 }
